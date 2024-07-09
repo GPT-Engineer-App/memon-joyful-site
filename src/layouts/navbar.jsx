@@ -9,18 +9,24 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import { CircleUser, Menu, Package2 } from "lucide-react";
+import { CircleUser, Menu } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
+import { motion } from "framer-motion";
 
 const Layout = () => {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between">
+      <motion.header 
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between"
+      >
         <DesktopNav />
         <MobileNav />
         <ConnectWalletButton />
-      </header>
+      </motion.header>
       <main className="flex-grow overflow-auto">
         <Outlet />
       </main>
@@ -34,7 +40,7 @@ const DesktopNav = () => (
       to="/"
       className="flex items-center gap-2 text-lg font-semibold md:text-base"
     >
-      <Package2 className="h-6 w-6" />
+      <img src="/memon-logo.png" alt="MEMON Logo" className="h-8 w-8" />
       <span>MEMON</span>
     </NavItem>
     {navItems.map((item) => (
@@ -59,7 +65,7 @@ const MobileNav = () => (
           to="/"
           className="flex items-center gap-2 text-lg font-semibold"
         >
-          <Package2 className="h-6 w-6" />
+          <img src="/memon-logo.png" alt="MEMON Logo" className="h-8 w-8" />
           <span>MEMON</span>
         </NavItem>
         {navItems.map((item) => (
@@ -73,9 +79,14 @@ const MobileNav = () => (
 );
 
 const ConnectWalletButton = () => (
-  <Button className="bg-purple-600 hover:bg-purple-700 text-white">
-    Connect Wallet
-  </Button>
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <Button className="bg-purple-600 hover:bg-purple-700 text-white">
+      Connect Wallet
+    </Button>
+  </motion.div>
 );
 
 const NavItem = ({ to, children, className }) => (

@@ -16,11 +16,24 @@ const Index = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl mx-auto text-center"
           >
+            <motion.img
+              src="/memon-logo.png"
+              alt="MEMON Logo"
+              className="w-32 h-32 mx-auto mb-8"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.5, type: "spring", stiffness: 260, damping: 20 }}
+            />
             <h1 className="text-4xl font-bold mb-4">Welcome to MEMON - The Meme Token on TON Blockchain</h1>
             <p className="text-xl mb-8">Join the revolution of meme tokens with MEMON.</p>
-            <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
-              Get Started
-            </Button>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+                Get Started
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -49,7 +62,7 @@ const Index = () => {
               transition={{ duration: 0.8 }}
               className="md:w-1/2"
             >
-              <img src="/placeholder.svg" alt="MEMON Illustration" className="mx-auto object-cover w-full h-[400px]" />
+              <img src="/memon-logo.png" alt="MEMON Illustration" className="mx-auto object-cover w-full h-[400px]" />
             </motion.div>
           </div>
         </div>
@@ -137,7 +150,12 @@ const Index = () => {
               <Input placeholder="Your Name" />
               <Input type="email" placeholder="Your Email" />
               <Textarea placeholder="Your Message" />
-              <Button type="submit" className="w-full">Send Message</Button>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button type="submit" className="w-full">Send Message</Button>
+              </motion.div>
             </div>
           </motion.form>
         </div>
@@ -162,7 +180,8 @@ const Index = () => {
               <a href="#" className="hover:text-purple-400"><i className="fab fa-discord"></i></a>
             </div>
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-center flex items-center justify-center">
+            <img src="/memon-logo.png" alt="MEMON Logo" className="h-8 w-8 mr-2" />
             <p>© 2023 MEMON. All rights reserved.</p>
           </div>
         </div>
